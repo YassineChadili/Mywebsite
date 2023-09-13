@@ -15,6 +15,7 @@
             .dropdown {
               position: relative;
               display: inline-block;
+              margin-top: 30px
             }
             .dropdown-content {
               display: none;
