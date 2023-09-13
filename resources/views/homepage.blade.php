@@ -21,39 +21,31 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+        <header class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex items-center sm:justify-between">
+            <h1>Mijn portfolio</h1>
+                @if (Route::has('login'))
+                <div class="flex sm:justify-between">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
+        </header>
+            <img class="site" src="img/site.png" alt="site" width="1600" height="900">
+            <footer>
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex items-center sm:justify-between">
+                            <h1>Contact</h1>
+                        <nav>
+                            <a href ="https://github.com/YassineChadili"target ="_blank"><img src ="img/gihublogo.png" alt="plaatje logo" width="50"/></a>
+                            <a href ="https://www.linkedin.com/in/yassine-chadili-119a53251/"target ="_blank"><img src = "img/linkedinlogo.png" alt="plaatje linkedin" width="50"/></a>
+                        </nav>
                 </div>
-            @endif
-
-            <div class="py-12">
-              <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                  <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                      <div class="p-6 bg-white border-b border-gray-200">
-                          <div class="aboutus-page">
-                              <div class="aboutus-info">
-                                  <h1>Mijn portfolio</h1>
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                  </p>
-                              </div>
-                              <div class="picture-div">
-                                  <img src="img/Y.jpg" alt="3D-EFFECT" width="600" height="350">
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+            </footer>
     </body>
 </html>
