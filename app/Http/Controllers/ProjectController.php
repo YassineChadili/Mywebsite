@@ -13,7 +13,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('projects/index')
+        return view('Projects/index')
             ->with('projects', $projects);
     }
 
@@ -22,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -30,7 +30,19 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+        ]);
+
+        Project::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $request->image,
+        ]);
+
+        return redirect()->route('Projects.index')->with('succes', 'Project is aangemaakt');
     }
 
     /**

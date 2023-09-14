@@ -33,6 +33,9 @@
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Projecten</h2>
+                <div class="pull-right mb-2">
+                    <a class="btn btn-success" href="{{ route('Projects.create') }}">Nieuw project</a>
+                </div>
             </div>
         </div>
     </div>
