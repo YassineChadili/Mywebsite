@@ -45,6 +45,7 @@
             <div class="dropdown-content">
               <a href="/">Homepagina</a>
               <a href="/aboutme">About me</a>
+              <a href="Projects">Mijn projecten</a>
             </div>
           </div>
     </x-slot>
