@@ -47,6 +47,7 @@
             <th>Titel</th>
             <th>Beschrijving</th>
             <th>Afbeelding</th>
+            <th>Bewerk</th>
         </thead>
         <tbody>
             @foreach ($projects as $project)
@@ -54,7 +55,15 @@
                 <td>{{ $project->id }}</td>
                 <td>{{ $project->title }}</td>
                 <td>{{ $project->description }}</td>
-                <td><img src="{{ $project->image }}" alt="Project Image" width=100px><td>
+                <td><img src="{{ $project->image }}" alt="Project Image" width=100px></td>
+                    <td>
+                        <form action="{{ route('Projects.destroy',$project->id) }}" method="Post">
+                            <a class="btn btn-primary" href="{{ route('Projects.edit',$project->id) }}">Bewerk</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Verwijder</button>
+                        </form>
+                    </td>
             </tr>
         @endforeach
         </tbody>
