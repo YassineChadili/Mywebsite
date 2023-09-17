@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        $categories = Category::all();
+        return view('projects.create', ['categories' => $categories]);
     }
 
     /**
@@ -34,12 +36,14 @@ class ProjectController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'required',
+            'category_id' => 'required',
         ]);
 
         Project::create([
             'title' => $request->title,
             'description' => $request->description,
             'image' => $request->image,
+            'category_id' => $request->category_id,
         ]);
 
         return redirect()->route('Projects.index')->with('succes', 'Project is aangemaakt');
@@ -58,7 +62,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $Project)
     {
-        return view('Projects.edit', compact('Project'));
+        $categories = Category::all();
+        return view('Projects.edit', compact('Project', 'categories'));
     }
 
     /**
@@ -70,6 +75,7 @@ class ProjectController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'required',
+            'category_id' => 'required',
         ]);
 
         $Project->fill($request->post())->save();

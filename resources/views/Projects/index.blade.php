@@ -47,6 +47,7 @@
             <th>Titel</th>
             <th>Beschrijving</th>
             <th>Afbeelding</th>
+            <th>Categorie</th>
             <th>Bewerk</th>
         </thead>
         <tbody>
@@ -56,6 +57,7 @@
                 <td>{{ $project->title }}</td>
                 <td>{{ $project->description }}</td>
                 <td><img src="{{ $project->image }}" alt="Project Image" width=100px></td>
+                <td>{{ $project->category->name }}</td>
                     <td>
                         <form action="{{ route('Projects.destroy',$project->id) }}" method="Post">
                             <a class="btn btn-primary" href="{{ route('Projects.edit',$project->id) }}">Bewerk</a>

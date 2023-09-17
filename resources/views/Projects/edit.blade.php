@@ -56,6 +56,19 @@
                     @enderror
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Categorie:</strong>
+                    <select name="category_id" id="1"> 
+                        @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary ml-3">Submit</button>
         </div>
     </form>

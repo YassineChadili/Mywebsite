@@ -17,6 +17,7 @@ class ProjectSeeder extends Seeder
             'title' => 'Event 1',
             'description' => 'Dit is een test',
             'image' => 'img/Y.jpg',
+            'category_id' => 1,
         ]);
     }
 }
