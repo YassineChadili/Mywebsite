@@ -83,7 +83,7 @@
                             <a class="btn btn-primary" href="{{ route('Projects.edit',$project->id) }}">Bewerk</a>
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Verwijder</button>
+                            <button type="submit" onclick="return confirm('Weet je het zeker?')" class="btn btn-danger">Verwijder</button>
                             @else
                                                
                                             @endif
