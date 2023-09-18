@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -15,7 +17,7 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
         return view('Projects/index')
-            ->with('projects', $projects);
+            ->with('projects', $projects)->with('user', Auth::user());
     }
 
     /**

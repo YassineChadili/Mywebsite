@@ -34,7 +34,11 @@
             <div class="pull-left">
                 <h2>Projecten</h2>
                 <div class="pull-right mb-2">
+                    @if($user->admin)
                     <a class="btn btn-success" href="{{ route('Projects.create') }}">Nieuw project</a>
+                    @else
+                    
+                @endif
                 </div>
             </div>
         </div>
@@ -59,7 +63,10 @@
             <th>Beschrijving</th>
             <th>Afbeelding</th>
             <th>Categorie</th>
+            @if($user->admin)
             <th>Bewerk</th>
+            @else
+           @endif
         </thead>
         <tbody>
             @foreach ($projects as $project)
@@ -70,11 +77,15 @@
                 <td><img src="{{ $project->image }}" alt="Project Image" width=100px></td>
                 <td>{{ $project->category->name }}</td>
                     <td>
+                        @if($user->admin)
                         <form action="{{ route('Projects.destroy',$project->id) }}" method="Post">
                             <a class="btn btn-primary" href="{{ route('Projects.edit',$project->id) }}">Bewerk</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Verwijder</button>
+                            @else
+                                               
+                                            @endif
                         </form>
                     </td>
             </tr>
