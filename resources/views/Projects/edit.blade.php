@@ -60,6 +60,7 @@
                 <div class="form-group">
                     <strong>Categorie:</strong>
                     <select name="category_id" id="1"> 
+                        <option value="" selected>Selecteer een categorie</option>
                         @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach

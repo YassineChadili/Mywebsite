@@ -62,7 +62,7 @@
                     <div class="item-card">
                         <div>
                         <h2>Mijn projecten</h2>
-                        <p>Bekijk hier mijn gemaakte projecten!
+                        <p><a href="Projects">Bekijk hier mijn gemaakte projecten!</a></p>
                         </div>
                     </div>
                     <div class="item-card">

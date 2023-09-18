@@ -67,6 +67,7 @@
             <th>Bewerk</th>
             @else
            @endif
+        </tr>
         </thead>
         <tbody>
             @foreach ($projects as $project)
@@ -76,8 +77,8 @@
                 <td>{{ $project->description }}</td>
                 <td><img src="{{ $project->image }}" alt="Project Image" width=100px></td>
                 <td>{{ $project->category->name }}</td>
+                    @if($user->admin)
                     <td>
-                        @if($user->admin)
                         <form action="{{ route('Projects.destroy',$project->id) }}" method="Post">
                             <a class="btn btn-primary" href="{{ route('Projects.edit',$project->id) }}">Bewerk</a>
                             @csrf
