@@ -38,6 +38,17 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <form method="get" action="/search">
+                    <div class="input-group">
+                        <input class="form-control" name="search" placeholder="Search..." value="{{ isset($search) ? $search : ''}}">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
 
     <table class="table table-bordered">

@@ -28,6 +28,7 @@ Route::get('/aboutme', function () {
 })->middleware(['auth', 'verified'])->name('aboutme');
 
 Route::resource('Projects', ProjectController::class)->middleware(['auth']);
+Route::get('/search',[ProjectController::class,'show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
