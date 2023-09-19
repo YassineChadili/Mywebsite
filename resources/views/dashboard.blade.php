@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Welkom op mijn portfolio site!') }}
         </h2>
@@ -54,8 +55,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                  <h1 style="margin-bottom: 20px">Klein overzicht van mijn projecten</h1>
-                  <table style="border: 2px solid gray">
+                  <h1 style="margin-bottom: 20px">Projecten</h1>
+                  <table class="table table-bordered">
                     <thead> 
                     <tr>
                         <th>Titel</th>
@@ -66,7 +67,7 @@
                     </thead>
                     <tbody>
                         @foreach ($projects as $project)
-                        <tr style="border: 2px solid gray">
+                        <tr>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->description }}</td>
                             <td><img src="{{ $project->image }}" alt="Project Image" width=100px></td>
