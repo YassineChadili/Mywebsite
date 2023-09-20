@@ -54,7 +54,7 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request, Project $Project){
+    public function search(Request $request, Project $Project){
 
         $search = $request->search;
         $projects =Project::where(function($query) use ($search){
@@ -69,6 +69,11 @@ class ProjectController extends Controller
             ->get();
             
             return view('Projects.index')->with('projects', $projects)->with('search', $search)->with('user', Auth::user());
+    }
+
+    public function show(Project $Project)
+    {
+        return view('Projects.show',compact('Project'));
     }
 
     /**

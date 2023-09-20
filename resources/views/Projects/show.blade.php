@@ -22,83 +22,47 @@
         </style>
     </head>
 <body>
-    <header class="bg-gray-100 max-w-7xl mx-auto sm:px-6 lg:px-8 flex items-center sm:justify-between">
-        <h1>Mijn projecten</h1>
-        <div class="flex sm:justify-between">
-            <a href="/">Home</a>
-        </div>
-    </header>
-<div class="container mt-2">
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Projecten</h2>
-                <div class="pull-right mb-2">
-                    @if($user->admin)
-                    <a class="btn btn-success" href="{{ route('Projects.create') }}">Nieuw project</a>
-                    @else
-                    
-                @endif
-                </div>
+    <div class="container mt-2">
+        <div class="pull-left">
+            <h2>Project verwijderen</h2>
+            <div class="pull-right mb-2">
+                <a class="btn btn-primary" href="{{ route('Projects.index') }}"> Back</a>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <form method="get" action="/search">
-                    <div class="input-group">
-                        <input class="form-control" name="search" placeholder="Search..." value="{{ isset($search) ? $search : ''}}">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Project</th>
-            <th>Titel</th>
-            <th>Beschrijving</th>
-            <th>Afbeelding</th>
-            <th>Categorie</th>
-            @if($user->admin)
-            <th>Bewerk</th>
-            @else
-           @endif
-        </tr>
-        </thead>
-        <tbody>
-            @foreach ($projects as $project)
+    
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <td>{{ $project->id }}</td>
-                <td>{{ $project->title }}</td>
-                <td>{{ $project->description }}</td>
-                <td><img src="{{ $project->image }}" alt="Project Image" width=100px></td>
-                <td>{{ $project->category->name }}</td>
-                    @if($user->admin)
-                    <td>
-                            <a class="btn btn-primary" href="{{ route('Projects.edit',$project->id) }}">Bewerk</a>
-                            <a class="btn btn-info" href="{{ route('Projects.show',$project->id) }}">Project verwijdren?</a>
-                            @else
-                                               
-                                            @endif
-                        </form>
-                    </td>
+                <th>Titel</th>
+                <th>Bewerk</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
-</div>
-<footer>
-    <div class="bg-gray-100 max-w-7xl mx-auto sm:px-6 lg:px-8 flex items-center sm:justify-between">
-                <h1>Contact</h1>
-            <nav>
-                <a href ="https://github.com/YassineChadili"target ="_blank"><img src ="img/gihublogo.png" alt="plaatje logo" width="50"/></a>
-                <a href ="https://www.linkedin.com/in/yassine-chadili-119a53251/"target ="_blank"><img src = "img/linkedinlogo.png" alt="plaatje linkedin" width="50"/></a>
-            </nav>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="projectname">{{ $Project->title }}</td>
+                        <td>
+                            <button id="showdestroy" class="btn btn-danger" style="display: show;">Verwijderen</button>
+                            <form id="deleteform" style="display: none;" action="{{ route('Projects.destroy',$Project->id) }}" method="Post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="return confirm('Weet je het zeker?')" class="btn btn-danger">Verwijder nu</button>
+                            </form>
+                            <script>
+                                document.getElementById('showdestroy').addEventListener('click', function(){
+                                        let projectName = document.getElementById('projectname').textContent;
+                
+                                        let answer = prompt('Typ het projectnaam in');
+                                        if(answer == projectName){
+                            
+                                            document.getElementById('deleteform').style.display = "block";
+                                            document.getElementById('showdestroy').style.display = "none";
+                                        }
+                                    })
+                                </script>
+                        </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-</footer>
 </body>
 </html> 
