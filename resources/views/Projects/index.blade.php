@@ -60,7 +60,7 @@
                     <th>Afbeelding</th>
                     <th>Categorie</th>
                     @if ($user->admin)
-                        <th>Bewerk</th>
+                    <th>Bewerk</th>
                     @else
                     @endif
                 </tr>
@@ -74,10 +74,9 @@
                         <td><img src="{{ $project->image }}" alt="Project Image" width=100px></td>
                         <td>{{ $project->category->name }}</td>
                         @if ($user->admin)
-                            <td>
-                                <a class="btn btn-primary" href="{{ route('projects.edit', $project->id) }}">Bewerk</a>
-                                <a class="btn btn-info" href="{{ route('projects.show', $project->id) }}">Project
-                                    verwijdren?</a>
+                        <td>
+                            <a class="btn btn-primary" href="{{ route('projects.edit', $project->id) }}">Bewerk</a>
+                            <a class="btn btn-info" href="{{ route('projects.show', $project->id) }}">Project verwijderen?</a>
                         @else
                         @endif
                         </td>
