@@ -40,17 +40,16 @@
             .dropdown:hover .dropbtn {
               background-color: black;
             }
-            </style>
+        </style>
         <div class="dropdown">
             <button class="dropbtn">Menu</button>
-            <div class="dropdown-content">
-              <a href="/">Homepagina</a>
-              <a href="/aboutme">About me</a>
-              <a href="Projects">Mijn projecten</a>
-            </div>
-          </div>
+                <div class="dropdown-content">
+                    <a href="/">Homepagina</a>
+                    <a href="/aboutme">About me</a>
+                    <a href="projects">Mijn projecten</a>
+                </div>
+        </div>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -58,24 +57,24 @@
                   <h1 style="margin-bottom: 20px">Projecten</h1>
                   <table class="table table-bordered">
                     <thead> 
-                    <tr>
-                        <th>Titel</th>
-                        <th>Beschrijving</th>
-                        <th>Afbeelding</th>
-                        <th>Categorie</th>
-                    </tr>
+                        <tr>
+                            <th>Titel</th>
+                            <th>Beschrijving</th>
+                            <th>Afbeelding</th>
+                            <th>Categorie</th>
+                        </tr>
                     </thead>
                     <tbody>
                         @foreach ($projects as $project)
-                        <tr>
-                            <td>{{ $project->title }}</td>
-                            <td>{{ $project->description }}</td>
-                            <td><img src="{{ $project->image }}" alt="Project Image" width=100px></td>
-                            <td>{{ $project->category->name }}</td>
-                        </tr>
-                    @endforeach
+                            <tr>
+                                <td>{{ $project->title }}</td>
+                                <td>{{ $project->description }}</td>
+                                <td><img src="{{ $project->image }}" alt="Project Image" width=100px></td>
+                                <td>{{ $project->category->name }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
-                </table>
+                 </table>
                 </div>
             </div>
         </div>

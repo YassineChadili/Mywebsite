@@ -16,7 +16,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('Projects/index')
+        return view('projects/index')
             ->with('projects', $projects)->with('user', Auth::user());
     }
 
@@ -48,47 +48,47 @@ class ProjectController extends Controller
             'category_id' => $request->category_id,
         ]);
 
-        return redirect()->route('Projects.index')->with('succes', 'Project is aangemaakt');
+        return redirect()->route('projects.index')->with('succes', 'Project is aangemaakt');
     }
 
     /**
      * Display the specified resource.
      */
-    public function search(Request $request, Project $Project){
+    public function search(Request $request, Project $project)
+    {
 
         $search = $request->search;
-        $projects =Project::where(function($query) use ($search){
+        $projects = Project::where(function ($query) use ($search) {
 
-            $query->where('title','like',"%$search%")
-            ->orWhere('description','like',"%$search%");
-
-            })
-            ->orWhereHas('category',function($query) use($search){
-                $query->where('name','like',"%$search%");
+            $query->where('title', 'like', "%$search%")
+                ->orWhere('description', 'like', "%$search%");
+        })
+            ->orWhereHas('category', function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%");
             })
             ->get();
-            
-            return view('Projects.index')->with('projects', $projects)->with('search', $search)->with('user', Auth::user());
+
+        return view('projects.index')->with('projects', $projects)->with('search', $search)->with('user', Auth::user());
     }
 
-    public function show(Project $Project)
+    public function show(Project $project)
     {
-        return view('Projects.show',compact('Project'));
+        return view('projects.show', compact('project'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $Project)
+    public function edit(Project $project)
     {
         $categories = Category::all();
-        return view('Projects.edit', compact('Project', 'categories'));
+        return view('projects.edit', compact('project', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $Project)
+    public function update(Request $request, Project $project)
     {
         $request->validate([
             'title' => 'required',
@@ -97,17 +97,17 @@ class ProjectController extends Controller
             'category_id' => 'required',
         ]);
 
-        $Project->fill($request->post())->save();
+        $project->fill($request->post())->save();
 
-        return redirect()->route('Projects.index')->with('succes', 'Project is aangepast');
+        return redirect()->route('projects.index')->with('succes', 'Project is aangepast');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $Project)
+    public function destroy(Project $project)
     {
-        $Project->delete();
-        return redirect()->route('Projects.index')->with('succes', 'Project is verwijderd');
+        $project->delete();
+        return redirect()->route('projects.index')->with('succes', 'Project is verwijderd');
     }
 }

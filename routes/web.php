@@ -29,7 +29,7 @@ Route::get('/aboutme', function () {
     return view('aboutme');
 })->middleware(['auth', 'verified'])->name('aboutme');
 
-Route::resource('Projects', ProjectController::class)->middleware(['auth']);
+Route::resource('projects', ProjectController::class)->middleware(['auth']);
 Route::get('/search',[ProjectController::class,'search']);
 
 Route::middleware('auth')->group(function () {
