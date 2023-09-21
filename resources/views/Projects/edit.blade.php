@@ -18,11 +18,11 @@
                 </div>
             </div>
         </div>
-        @if(session('status'))
-            <div class="alert alert-success mb-1 mt-1">
-                {{ session('status') }}
-            </div>
-        @endif 
+        @if($errors->any())
+        @foreach($errors->all() as $error)
+            <li> {{ $error }}</li>
+        @endforeach
+        @endif
         <form action="{{ route('projects.update',$project->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -39,7 +39,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Beschrijving:</strong>
-                        <input type="text" name="description"  value="{{ $project->description }}" class="form-control" placeholder="description">
+                        <textarea name="description" class="form-control" placeholder="description">{{ $project->description }}</textarea>
                         @error('description')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror

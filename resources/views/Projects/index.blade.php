@@ -51,6 +51,9 @@
                 </div>
             </div>
         </div>
+        @if(Session::has('succes'))
+            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('succes') }}</p>
+        @endif
         <table class="table table-bordered">
             <thead>
                 <tr>
