@@ -60,7 +60,7 @@
                         <select name="category_id" id="1"> 
                             <option value="" selected>Selecteer een categorie</option>
                             @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{$category->id}}" {{ $project->category_id == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
                             @endforeach
                         </select>
                         @error('category_id')
