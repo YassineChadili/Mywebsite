@@ -45,7 +45,6 @@
             <button class="dropbtn">Menu</button>
                 <div class="dropdown-content">
                     <a href="/">Homepagina</a>
-                    <a href="/aboutme">About me</a>
                     <a href="projects">Mijn projecten</a>
                 </div>
         </div>

@@ -30,6 +30,10 @@
             margin-inline-end: 0px;
             font-weight: bold;
         }
+
+        footer {
+            background-color: #D9D9D9;
+        }
     </style>
 </head>
 
@@ -44,13 +48,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Projecten</h2>
-                    <div class="pull-right mb-2">
-                        @if ($user->admin)
-                            <a class="btn btn-success" href="{{ route('projects.create') }}">Nieuw project</a>
-                        @else
-                        @endif
-                    </div>
+                    <h2>Mijn projecten</h2>
                 </div>
             </div>
             <div class="col-md-6">
@@ -65,9 +63,6 @@
                 </div>
             </div>
         </div>
-        @if(Session::has('succes'))
-            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('succes') }}</p>
-        @endif
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -76,10 +71,6 @@
                     <th>Beschrijving</th>
                     <th>Afbeelding</th>
                     <th>Categorie</th>
-                    @if ($user->admin)
-                    <th>Bewerk</th>
-                    @else
-                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -90,18 +81,22 @@
                         <td>{{ $project->description }}</td>
                         <td><img src="{{ $project->image }}" alt="Project Image" width=100px></td>
                         <td>{{ $project->category->name }}</td>
-                        @if ($user->admin)
-                        <td>
-                            <a class="btn btn-primary" href="{{ route('projects.edit', $project->id) }}">Bewerk</a>
-                            <a class="btn btn-danger" href="{{ route('projects.show', $project->id) }}">Project verwijderen?</a>
-                        @else
-                        @endif
-                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    <footer>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex items-center sm:justify-between">
+            <h1>Contact</h1>
+            <nav>
+                <a href="https://github.com/YassineChadili" target="_blank"><img src="img/gihublogo.png"
+                        alt="plaatje logo" width="50" /></a>
+                <a href="https://www.linkedin.com/in/yassine-chadili-119a53251/" target="_blank"><img
+                        src="img/linkedinlogo.png" alt="plaatje linkedin" width="50" /></a>
+            </nav>
+        </div>
+    </footer>
 </body>
 
 </html>

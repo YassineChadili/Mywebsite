@@ -15,9 +15,29 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+
+            header {
+                background-color: #D9D9D9;
+            }
+
+            h1 {
+                display: block;
+                font-size: 2em;
+                margin-block-start: 0.67em;
+                margin-block-end: 0.67em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                font-weight: bold;
+            }
         </style>
     </head>
-    <body>
+    <body class="bg-gray-100">
+        <header class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex items-center sm:justify-between">
+            <h1>Mijn portfolio</h1>
+            <div class="flex sm:justify-between">
+                <a href="/">Home</a>
+            </div>
+        </header>
         <div class="container mt-2">
             <div class="pull-left">
                 <h2>Project verwijderen</h2>

@@ -20,14 +20,17 @@ Route::get('/', function () {
     return view('homepage');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/projecten', function () {
     $projects = Project::all();
-    return view('dashboard', ['projects' => $projects]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('projecten', ['projects' => $projects]);
+    return view('projecten');
+});
 
-Route::get('/aboutme', function () {
-    return view('aboutme');
-})->middleware(['auth', 'verified'])->name('aboutme');
+
+//Route::get('/dashboard', function () {
+    //$projects = Project::all();
+    //return view('dashboard', ['projects' => $projects]);
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('projects', ProjectController::class)->middleware(['auth']);
 Route::get('/search',[ProjectController::class,'search']);

@@ -68,7 +68,7 @@ class ProjectController extends Controller
             })
             ->get();
 
-        return view('projects.index')->with('projects', $projects)->with('search', $search)->with('user', Auth::user());
+        return view('projecten')->with('projects', $projects)->with('search', $search)->with('user', Auth::user());
     }
 
     public function show(Project $project)
